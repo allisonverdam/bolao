@@ -1,4 +1,4 @@
-import { db } from './firebase';
+import { db, auth } from './firebase';
 
 // User API
 
@@ -12,3 +12,9 @@ export const onceGetUsers = () =>
   db.ref('users').once('value');
 
 // Other db APIs ...
+
+
+// Auth
+
+export const getAuthenticatedUser = () => db.ref('users/'+auth.currentUser.uid).once('value')
+  

@@ -3,21 +3,21 @@ import 'firebase/auth';
 import 'firebase/database';
 
 const prodConfig = {
-  apiKey: YOUR_API_KEY,
-  authDomain: YOUR_AUTH_DOMAIN,
-  databaseURL: YOUR_DATABASE_URL,
-  projectId: YOUR_PROJECT_ID,
-  storageBucket: '',
-  messagingSenderId: YOUR_MESSAGING_SENDER_ID,
+  apiKey: "AIzaSyCChzih6huV5peLkdffS7LuXjulkolCyDo",
+  authDomain: "bolao-11f41.firebaseapp.com",
+  databaseURL: "https://bolao-11f41.firebaseio.com",
+  projectId: "bolao-11f41",
+  storageBucket: "bolao-11f41.appspot.com",
+  messagingSenderId: "982777226764"
 };
 
 const devConfig = {
-  apiKey: YOUR_API_KEY,
-  authDomain: YOUR_AUTH_DOMAIN,
-  databaseURL: YOUR_DATABASE_URL,
-  projectId: YOUR_PROJECT_ID,
-  storageBucket: '',
-  messagingSenderId: YOUR_MESSAGING_SENDER_ID,
+  apiKey: "AIzaSyCChzih6huV5peLkdffS7LuXjulkolCyDo",
+  authDomain: "bolao-11f41.firebaseapp.com",
+  databaseURL: "https://bolao-11f41.firebaseio.com",
+  projectId: "bolao-11f41",
+  storageBucket: "bolao-11f41.appspot.com",
+  messagingSenderId: "982777226764"
 };
 
 const config = process.env.NODE_ENV === 'production'

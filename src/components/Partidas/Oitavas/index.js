@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import withAuthorization from '../Session/withAuthorization';
-import { db } from '../../firebase';
+import withAuthorization from '../../Session/withAuthorization';
+import { db } from '../../../firebase';
 
-import * as routes from '../../constants/routes';
+class OitavasPage extends Component {
+  constructor(props){
+    super(props)
 
-class HomePage extends Component {
-  componentDidMount() {
-    const { userStore } = this.props;
+    this.state = {
+      authenticatedUser: JSON.parse(localStorage.getItem('user'))
+    }
+  }
+
+  componentDidMount(){
+    const { userStore } = this.props;  
 
     db.onceGetUsers().then(snapshot =>
       userStore.setUsers(snapshot.val())
     );
+    
   }
 
   render() {
@@ -22,11 +28,9 @@ class HomePage extends Component {
 
     return (
       <div>
-        <h1>Home</h1>
-        <p>The Home Page is accessible by every signed in user.</p>
+        <h1>Oitavas de finais</h1>
 
-        <Link className="button is-primary" to={routes.OITAVAS}>Oitavas de Final</Link>
-        
+        <h1>{this.state.authenticatedUser.username}</h1>
 
         { !!users && <UserList users={users} /> }
       </div>
@@ -35,7 +39,7 @@ class HomePage extends Component {
 }
 
 const UserList = ({ users }) =>
-  <div>
+  <div>  
     <h2>List of Usernames of Users</h2>
     <p>(Saved on Sign Up in Firebase Database)</p>
 
@@ -50,4 +54,4 @@ export default compose(
   withAuthorization(authCondition),
   inject('userStore'),
   observer
-)(HomePage);
+)(OitavasPage);
